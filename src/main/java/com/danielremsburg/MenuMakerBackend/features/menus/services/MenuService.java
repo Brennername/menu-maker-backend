@@ -25,8 +25,7 @@ public class MenuService {
         Optional<Menu> existingMenu = menuRepository.findByDateAndMealAndLine(date, meal, line);
         return existingMenu.orElseGet(() -> {
             Menu newMenu = new MenuEntity(date, meal, line);
-            menuRepository.save(newMenu);
-            return newMenu;
+            return menuRepository.save(newMenu);
         });
     }
 
@@ -34,20 +33,14 @@ public class MenuService {
       return menuRepository.getAllMenusByDate(date);
     }
 
-    public Optional<Menu> getMenuByDateAndMealAndLine(LocalDate date, Meal meal, Line line) {
-      return menuRepository.findByDateAndMealAndLine(date, meal, line);
-    }
-
     public List<Menu> getMenusByDateAndLine(LocalDate date, String line) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMenusByDateAndLine'");
+      return menuRepository.getMenusByDateAndLine(date, line);
     }
 
     public Menu getMenuByDateAndMealAndLine(LocalDate date, String meal, String line) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMenuByDateAndMealAndLine'");
+     return menuRepository.getMenuByDateAndMealAndLine(date, meal, line);
     }
+    
 
-   
 
-}
+ }
