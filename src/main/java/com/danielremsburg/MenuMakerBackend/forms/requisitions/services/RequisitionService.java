@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
-import com.danielremsburg.MenuMakerBackend.forms.meals.interfaces.Meal;
+import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.interfaces.Requisition;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories.RequisitionRepository;
 

@@ -1,10 +1,10 @@
-package com.danielremsburg.MenuMakerBackend.forms.LandingPage.controllers;
+package com.danielremsburg.MenuMakerBackend.forms.landing.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LandingPageController {
+public class LandingController {
     @GetMapping("/")
     String hello() {
       String name = "World";

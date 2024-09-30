@@ -8,7 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
-import com.danielremsburg.MenuMakerBackend.forms.meals.interfaces.Meal;
+import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.menus.interfaces.Menu;
 
 @Repository

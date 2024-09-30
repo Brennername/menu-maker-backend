@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
-import com.danielremsburg.MenuMakerBackend.forms.meals.interfaces.Meal;
+import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.interfaces.Requisition;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories.RequisitionRepository;
 

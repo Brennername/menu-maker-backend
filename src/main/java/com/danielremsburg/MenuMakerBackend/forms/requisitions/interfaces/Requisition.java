@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
-import com.danielremsburg.MenuMakerBackend.forms.meals.interfaces.Meal;
+import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories.RequisitionRepository;
 
 public interface Requisition {
