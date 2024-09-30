@@ -28,6 +28,7 @@ public class MenusController {
 
     @GetMapping("/{date}/{meal}/{line}")
     public Menu getMenuByDateAndMeal(@PathVariable LocalDate date, @PathVariable String meal, @PathVariable String line) {
+        
         return menuService.getMenuByDateAndMealAndLine(date, meal, line);
     }
 

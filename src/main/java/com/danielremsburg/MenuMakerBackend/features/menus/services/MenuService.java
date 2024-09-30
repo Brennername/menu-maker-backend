@@ -31,18 +31,21 @@ public class MenuService {
     }
 
     public List<Menu> getAllMenusByDate(LocalDate date) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllMenusByDate'");
+      return menuRepository.getAllMenusByDate(date);
     }
 
-    public Menu getMenuByDateAndMealAndLine(LocalDate date, String meal, String line) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMenuByDateAndMealAndLine'");
+    public Optional<Menu> getMenuByDateAndMealAndLine(LocalDate date, Meal meal, Line line) {
+      return menuRepository.findByDateAndMealAndLine(date, meal, line);
     }
 
     public List<Menu> getMenusByDateAndLine(LocalDate date, String line) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getMenusByDateAndLine'");
+    }
+
+    public Menu getMenuByDateAndMealAndLine(LocalDate date, String meal, String line) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getMenuByDateAndMealAndLine'");
     }
 
    

@@ -13,4 +13,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "lines")
 public class Line {
    private String name;
+
+public static Line getByName(String line) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getByName'");
+}
 }
