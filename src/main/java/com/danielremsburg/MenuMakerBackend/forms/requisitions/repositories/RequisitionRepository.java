@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
+import com.danielremsburg.MenuMakerBackend.forms.lines.entitites.LineEntity;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.interfaces.Requisition;
 
@@ -22,12 +22,12 @@ public interface RequisitionRepository extends JpaRepository<Requisition, Long> 
     List<Requisition> findAllByDate(LocalDate date);
 
     // Find all Requisitions by line
-    List<Requisition> findAllByLine(Line line);
+    List<Requisition> findAllByLine(LineEntity line);
 
     // Find all Requisitions by meal
     List<Requisition> findAllByMeal(Meal meal);
 
-    static Requisition getOrCreateRequisition(LocalDate date, Line line, Meal meal) {
+    static Requisition getOrCreateRequisition(LocalDate date, LineEntity line, Meal meal) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getOrCreateRequisition'");
     }

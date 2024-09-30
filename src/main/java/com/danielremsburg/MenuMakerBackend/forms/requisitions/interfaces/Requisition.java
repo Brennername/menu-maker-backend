@@ -3,13 +3,13 @@ package com.danielremsburg.MenuMakerBackend.forms.requisitions.interfaces;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
+import com.danielremsburg.MenuMakerBackend.forms.lines.entitites.LineEntity;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories.RequisitionRepository;
 
 public interface Requisition {
     LocalDate getDate();
-    Line getLine();
+    LineEntity getLine();
     Meal getMeal();
 
     // Default methods
@@ -30,7 +30,7 @@ public interface Requisition {
         return date.getDayOfWeek().getValue() == 6 || date.getDayOfWeek().getValue() == 7;
     }
 
-    default Requisition getRequisitionByDateLineMeal(LocalDate date, Line line, Meal meal)
+    default Requisition getRequisitionByDateLineMeal(LocalDate date, LineEntity line, Meal meal)
     {
         return RequisitionRepository.getOrCreateRequisition(date, line, meal);
     }

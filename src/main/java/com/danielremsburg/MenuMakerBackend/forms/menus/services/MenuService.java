@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
+import com.danielremsburg.MenuMakerBackend.forms.lines.entitites.LineEntity;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.menus.entitites.MenuEntity;
 import com.danielremsburg.MenuMakerBackend.forms.menus.interfaces.Menu;
@@ -21,7 +21,7 @@ public class MenuService {
     @Autowired
     private MenuRepository menuRepository;
     @Transactional
-    public Menu get(LocalDate date, Meal meal, Line line) {
+    public Menu get(LocalDate date, Meal meal, LineEntity line) {
         Optional<Menu> existingMenu = menuRepository.findByDateAndMealAndLine(date, meal, line);
         return existingMenu.orElseGet(() -> {
             Menu newMenu = new MenuEntity(date, meal, line);

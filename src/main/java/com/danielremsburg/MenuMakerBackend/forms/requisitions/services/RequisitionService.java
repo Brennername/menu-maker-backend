@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
+import com.danielremsburg.MenuMakerBackend.forms.lines.entitites.LineEntity;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.interfaces.Requisition;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories.RequisitionRepository;
@@ -30,7 +30,7 @@ public class RequisitionService {
         return requisitionRepository.findAllByDate(date);
     }
 
-    public List<Requisition> getRequisitionsByLine(Line line) {
+    public List<Requisition> getRequisitionsByLine(LineEntity line) {
         return requisitionRepository.findAllByLine(line);
     }
 
@@ -44,7 +44,7 @@ public class RequisitionService {
 
    
 
-    public static Object findByDateAndMealAndLine(LocalDate date, Meal meal, Line line) {
+    public static Object findByDateAndMealAndLine(LocalDate date, Meal meal, LineEntity line) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findByDateAndMealAndLine'");
     }
