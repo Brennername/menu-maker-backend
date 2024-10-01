@@ -7,6 +7,8 @@ import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
 
 public interface LineRepository extends CrudRepository<Line, Long> {
 
+    Line findByName(String name);
+
 }
 
 

@@ -25,6 +25,9 @@ public class LineService {
         }
         return list;
      }
+    public Line getLineByName(String name) {
+        return lineRepository.findByName(name);
+    }
 
     public Line getLineById(Long id) {
         return lineRepository.findById(id).orElse(null);
