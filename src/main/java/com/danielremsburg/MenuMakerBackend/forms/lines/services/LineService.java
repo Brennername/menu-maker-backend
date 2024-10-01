@@ -1,5 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:4025318084.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:113576103.
 package com.danielremsburg.MenuMakerBackend.forms.lines.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,8 @@ public class LineService {
     }
 
     public Line getLineById(Long id) {
+
+        ////What happens when we return null?
         return lineRepository.findById(id).orElse(null);
     }
 

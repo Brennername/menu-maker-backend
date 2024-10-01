@@ -7,7 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.danielremsburg.MenuMakerBackend.forms.lines.entitites.LineEntity;
+import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
+import com.danielremsburg.MenuMakerBackend.forms.lines.services.LineService;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.menus.entitites.MenuEntity;
 import com.danielremsburg.MenuMakerBackend.forms.menus.interfaces.Menu;
@@ -20,15 +21,33 @@ public class MenuService {
 
     @Autowired
     private MenuRepository menuRepository;
+    @Autowired
+    private LineService lineService;
+
+    public MenuService(MenuRepository menuRepository) {
+        this.menuRepository = menuRepository;
+    }
+    public List<Menu> getAllMenus() {
+        return (List<Menu>) menuRepository.findAll();
+    }
+
+    public Menu getMenuById(Long id) {
+        return menuRepository.findById(id).orElse(null);
+    }
+
     @Transactional
-    public Menu get(LocalDate date, Meal meal, LineEntity line) {
-        Optional<Menu> existingMenu = menuRepository.findByDateAndMealAndLine(date, meal, line);
+    public Menu getMenu(LocalDate date, Meal meal, Line lineEntity) {
+        Optional<Menu> existingMenu = menuRepository.findByDateAndMealAndLine(date, meal, lineEntity);
         return existingMenu.orElseGet(() -> {
-            Menu newMenu = new MenuEntity(date, meal, line);
+            Menu newMenu = new MenuEntity(date, meal, lineEntity);
             return menuRepository.save(newMenu);
         });
     }
-
+  public Menu getMenu(LocalDate date, String meal, String line) {
+   Meal mealEnum = Meal.valueOf(meal.toUpperCase());
+   Line lineEntity = lineService.getLineByName(line);
+   return getMenu(date, mealEnum, lineEntity);
+  }
     public List<Menu> getAllMenusByDate(LocalDate date) {
       return menuRepository.getAllMenusByDate(date);
     }
@@ -37,9 +56,11 @@ public class MenuService {
       return menuRepository.getMenusByDateAndLine(date, line);
     }
 
-    public Menu getMenuByDateAndMealAndLine(LocalDate date, String meal, String line) {
+    public Optional<Menu> getMenuByDateAndMealAndLine(LocalDate date, String meal, String line) {
      return menuRepository.getMenuByDateAndMealAndLine(date, meal, line);
     }
+
+   
     
 
 

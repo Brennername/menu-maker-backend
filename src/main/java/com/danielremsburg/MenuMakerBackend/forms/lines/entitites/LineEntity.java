@@ -13,5 +13,4 @@ import lombok.NoArgsConstructor;
 @Table(name = "lines")
 public class LineEntity {
    private String name;
-
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
-import com.danielremsburg.MenuMakerBackend.forms.lines.entitites.LineEntity;
+import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.menus.interfaces.Menu;
 
@@ -33,9 +33,9 @@ public class MenuEntity implements Menu {
     private Meal meal;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private LineEntity line;
+    private Line line;
 
-    public MenuEntity(LocalDate date, Meal meal, LineEntity line) {
+    public MenuEntity(LocalDate date, Meal meal, Line line) {
         this.date = date;
         this.meal = meal;
         this.line = line;

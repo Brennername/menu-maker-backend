@@ -11,6 +11,7 @@ import com.danielremsburg.MenuMakerBackend.forms.menus.services.MenuService;
 import java.time.LocalDate;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/v1/menus")
 public class MenusController {
@@ -28,8 +29,7 @@ public class MenusController {
 
     @GetMapping("/{date}/{meal}/{line}")
     public Menu getMenuByDateAndMeal(@PathVariable LocalDate date, @PathVariable String meal, @PathVariable String line) {
-        
-        return menuService.getMenuByDateAndMealAndLine(date, meal, line);
+               return menuService.getMenu(date, meal, line);
     }
 
     @GetMapping("/{date}/{line}")
