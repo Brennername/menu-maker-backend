@@ -11,9 +11,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.time.LocalDate;
-
-import com.danielremsburg.MenuMakerBackend.forms.lines.entitites.LineEntity;
+import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.interfaces.Requisition;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories.RequisitionRepository;
@@ -23,12 +21,12 @@ import com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories.Requi
 @NoArgsConstructor
 @Entity
 @Table(name = "requisitions", 
-       indexes = {@Index(name = "idx_requisition_date_line_meal", 
-                         columnList = "date, line_id, meal_id")})
+       indexes = {@Index(name = "idx_requisition_line_meal", 
+                         columnList = "line_id, meal_id")})
 public class RequisitionEntity implements Requisition {
 
-    public RequisitionEntity (LocalDate date, LineEntity line, Meal meal) {
-        this.date = date;
+    public RequisitionEntity (Line line, Meal meal) {
+        
         this.line = line;
         this.meal = meal;
     }
@@ -37,21 +35,21 @@ public class RequisitionEntity implements Requisition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate date;
+    
 
     @ManyToOne  // Assuming a Many-to-One relationship with Line
     @JoinColumn(name = "line_id") // Adjust column name if needed
-    private LineEntity line;
+    private Line line;
 
     @ManyToOne  // Assuming a Many-to-One relationship with Meal
     @JoinColumn(name = "meal_id") // Adjust column name if needed
     private Meal meal;
 
-    public static Requisition create(LocalDate date, LineEntity line, Meal meal, RequisitionRepository requisitionRepository) {
+    public static Requisition create(Line line, Meal meal, RequisitionRepository requisitionRepository) {
         // Create a new RequisitionImpl object
-        RequisitionEntity requisition = new RequisitionEntity(date, line, meal);
+        Requisition requisition = new RequisitionEntity(line, meal);
         // Save the requisition to the database to generate the ID
-        requisition = (RequisitionEntity) requisitionRepository.save(requisition); 
+        requisition = requisitionRepository.save(requisition); 
         return requisition;
     }
 
