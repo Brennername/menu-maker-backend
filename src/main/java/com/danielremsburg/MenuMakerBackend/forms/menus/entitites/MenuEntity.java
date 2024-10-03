@@ -1,5 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1560230647.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:3774520129.
 package com.danielremsburg.MenuMakerBackend.forms.menus.entitites;
 import lombok.AllArgsConstructor;
 import lombok.Data;

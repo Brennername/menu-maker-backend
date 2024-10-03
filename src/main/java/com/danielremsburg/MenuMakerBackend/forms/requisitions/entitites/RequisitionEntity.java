@@ -1,4 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2288543590.
 package com.danielremsburg.MenuMakerBackend.forms.requisitions.entitites;
 
 import jakarta.persistence.CascadeType;

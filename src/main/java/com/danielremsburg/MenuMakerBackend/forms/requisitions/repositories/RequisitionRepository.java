@@ -1,5 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1808025080.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1882751994.
 package com.danielremsburg.MenuMakerBackend.forms.requisitions.repositories;
 
 import java.time.LocalDate;

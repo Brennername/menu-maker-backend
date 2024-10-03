@@ -1,4 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2666328569.
 package com.danielremsburg.MenuMakerBackend.forms.menus.entitites;
 
 import com.danielremsburg.MenuMakerBackend.forms.menus.interfaces.MenuItem;
