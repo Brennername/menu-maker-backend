@@ -1,5 +1,7 @@
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:2288543590.
 package com.danielremsburg.MenuMakerBackend.forms.requisitions.entitites;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,10 +9,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.List;
+
 import com.danielremsburg.MenuMakerBackend.forms.lines.interfaces.Line;
 import com.danielremsburg.MenuMakerBackend.forms.meals.enums.Meal;
 import com.danielremsburg.MenuMakerBackend.forms.requisitions.interfaces.Requisition;
@@ -35,8 +40,6 @@ public class RequisitionEntity implements Requisition {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    
-
     @ManyToOne  // Assuming a Many-to-One relationship with Line
     @JoinColumn(name = "line_id") // Adjust column name if needed
     private Line line;
@@ -44,6 +47,9 @@ public class RequisitionEntity implements Requisition {
     @ManyToOne  // Assuming a Many-to-One relationship with Meal
     @JoinColumn(name = "meal_id") // Adjust column name if needed
     private Meal meal;
+    
+    @OneToMany(mappedBy = "requisition", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RequisitionItemEntity> requisitionItems;
 
     public static Requisition create(Line line, Meal meal, RequisitionRepository requisitionRepository) {
         // Create a new RequisitionImpl object
