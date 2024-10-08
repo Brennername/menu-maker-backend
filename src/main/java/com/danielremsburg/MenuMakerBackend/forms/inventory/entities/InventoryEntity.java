@@ -1,9 +1,5 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:258602031.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:4011993403.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1462285166.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2400470126.
 package com.danielremsburg.MenuMakerBackend.forms.inventory.entities;
-
+import com.danielremsburg.MenuMakerBackend.forms.inventory.entities.InventoryItem;
 import jakarta.persistence.*;
 
 import java.sql.Date;
@@ -22,6 +18,17 @@ public class InventoryEntity {
     @Column(name = "notes", columnDefinition = "TEXT")
     private String notes;
 
+        @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<InventoryItem> inventoryItems = new HashSet<>();
+
+    public Set<InventoryItem> getInventoryItems() {
+        return inventoryItems;
+    }
+
+    public void setInventoryItems(Set<InventoryItem> inventoryItems) {
+        this.inventoryItems = inventoryItems;
+    }
+    
     // Getters and setters for id, date, and notes
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
