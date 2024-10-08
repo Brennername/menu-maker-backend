@@ -1,8 +1,11 @@
 package com.danielremsburg.MenuMakerBackend.forms.inventory.entities;
-import com.danielremsburg.MenuMakerBackend.forms.inventory.entities.InventoryItem;
+
+import com.danielremsburg.MenuMakerBackend.forms.inventory.interfaces.InventoryItem;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "inventory")
