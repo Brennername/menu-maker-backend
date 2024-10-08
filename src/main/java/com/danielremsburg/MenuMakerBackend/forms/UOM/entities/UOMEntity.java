@@ -15,4 +15,6 @@ public class UOMEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
+    
 }
+
