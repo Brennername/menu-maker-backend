@@ -4,7 +4,9 @@ import org.springframework.data.annotation.Id;
 
 import lombok.Data;
 
-import com.danielremsburg.MenuMakerBackend.forms.stockitems.entitites.StockItemEntity;
+import com.danielremsburg.MenuMakerBackend.forms.UOM.interfaces.UOM;
+import com.danielremsburg.MenuMakerBackend.forms.inventory.interfaces.Inventory;
+import com.danielremsburg.MenuMakerBackend.forms.stockitems.interfaces.StockItem;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,27 +27,26 @@ public class InventoryItemEntity {
 
     @ManyToOne
     @JoinColumn(name = "inventory_id", nullable = false)
-    private InventoryEntity inventory;
+    private Inventory inventory;
 
     @ManyToOne
     @JoinColumn(name = "stock_item_id", nullable = false)
-    private StockItemEntity stockItem;
+    private StockItem stockItem;
 
     @Column(nullable = false)
     private double quantity;
 
-    @Column(nullable = false)
-    private String uom; // unit of measure (e.g., lbs, oz, gallons)
+    @ManyToOne
+    @JoinColumn(name = "uom_id", nullable = false)
+    private UOM uom; // unit of measure (e.g., lbs, oz, gallons)
 
-    public InventoryItemEntity(InventoryEntity inventory, StockItemEntity stockItem, double quantity, String uom) {
+    
+
+    public InventoryItemEntity(Inventory inventory, StockItem stockItem, double quantity, UOM uom) {
         this.inventory = inventory;
         this.stockItem = stockItem;
         this.quantity = quantity;
         this.uom = uom;
-    }
-    
-    public InventoryItemEntity(InventoryEntity inventory){
-        this.inventory = inventory;
     }
 
 }

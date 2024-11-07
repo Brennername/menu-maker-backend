@@ -30,7 +30,4 @@ public class StockItemEntity implements StockItem {
     private String description;
     private int quantity;
 
-    // Constructors, getters, and setters
-    // ...
-
 }
